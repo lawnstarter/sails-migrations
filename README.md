@@ -73,3 +73,21 @@ A migration constitutes of two parts:
 
 - `up`: determines what should be performed when you want to forward your database to this version.
 - `down`: should be the exact reverse of the up method, so, for example, if on the up phase you created a table, the down phase should delete that table.
+
+## Adapters supported
+
+These adapters supported currently with no special considerations:
+- `sails-postgresql`
+- `sails-mysql`
+
+Other adapters supported but with slightly modified setup:
+- `waterline-postgresql` for this adapter to function with sails-migration you have to use the url property to connect
+```
+// config/connections.js
+module.exports.connections = {
+  connectionNameHere: {
+    adapter: 'waterline-postgresql',
+    url: 'postgresql://username:password@localhost:5432/dbName?ssl=false'
+  }
+}
+```
